@@ -39,6 +39,9 @@ class Home(models.Model):
     geo_lng = models.CharField(max_length=500)
     max_capacity = models.IntegerField(default=0)
     current_person = models.IntegerField(default=0)
+    is_address_find_done = models.BooleanField(default=False)
+    is_latlng_find_done = models.BooleanField(default=False)
+    is_detail_find_done = models.BooleanField(default=False)
     created_date = models.DateTimeField('date created')
     updated_date = models.DateTimeField('date updated')
 
