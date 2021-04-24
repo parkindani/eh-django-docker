@@ -24,19 +24,20 @@ class GroupViewSet(viewsets.ModelViewSet):
 class HomeViewSet(viewsets.ModelViewSet):
     queryset = Home.objects.all()
     serializer_class = HomeSerializer
+    http_method_names = ['get', 'head']
 
+    def get_queryset(self):
+        qs = super().get_queryset()
 
-class HomeList(generics.ListAPIView):
-    @api_view(['GET'])
-    def get_home_with_name(self):
-        queryset = Home.objects.all()
-        name = self.query_params.get('name')
+        name = self.request.query_params.get('name', '')
+        geo_lat = self.request.query_params.get('geo_lat', '')
+        geo_lng = self.request.query_params.get('geo_lng', '')
+
         if name:
-            print('asdf', name)
-            print(queryset)
-            queryset = queryset.filter(home_name__contains=name)
-            print('exits>>>>>>>>>>>>>>>>>>>')
-            print(queryset)
-            data = HomeSerializer(queryset).data
-            print(data)
-            return Response(data, status=status.HTTP_200_OK)
+            qs = qs.filter(home_name__contains=name)
+
+        if geo_lat and geo_lng:
+            qs = qs.filter()
+
+        return qs
+

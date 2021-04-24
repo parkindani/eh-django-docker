@@ -15,5 +15,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class HomeSerializer(serializers.Serializer):
-    home_name = serializers.CharField(max_length=500)
+class HomeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Home
+        fields = '__all__'
