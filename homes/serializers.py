@@ -19,3 +19,9 @@ class HomeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Home
         fields = '__all__'
+
+
+class HomeAllSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Home
+        fields = ['home_name', 'geo_lat_decimal', 'geo_lng_decimal']
