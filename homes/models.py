@@ -1,4 +1,5 @@
 from django.db import models
+from decimal import Decimal
 
 
 class Sido(models.Model):
@@ -37,6 +38,8 @@ class Home(models.Model):
     address = models.CharField(max_length=500)
     geo_lat = models.CharField(max_length=500)
     geo_lng = models.CharField(max_length=500)
+    geo_lat_decimal = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.000000'))
+    geo_lng_decimal = models.DecimalField(max_digits=9, decimal_places=6, default=Decimal('0.000000'))
     max_capacity = models.IntegerField(default=0)
     current_person = models.IntegerField(default=0)
     is_address_find_done = models.BooleanField(default=False)
