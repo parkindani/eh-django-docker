@@ -5,3 +5,4 @@ markdown
 django-filter
 requests
 python-dotenv
+django-cors-headers
