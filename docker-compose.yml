@@ -12,7 +12,8 @@ services:
       - web
   web:
     build: .
-    command: gunicorn elderlyhome.wsgi -b 0.0.0.0:8000
+    command: >
+      sh -c "python manage.py collectstatic && gunicorn elderlyhome.wsgi -b 0.0.0.0:8000"
     volumes:
       - .:/code
     expose:
