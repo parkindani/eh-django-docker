@@ -1,10 +1,19 @@
 version: "3.9"
    
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+    - "80:80"
+    volumes:
+    - .:/code
+    - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn elderlyhome.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/code
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"

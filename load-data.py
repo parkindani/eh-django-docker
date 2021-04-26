@@ -41,5 +41,5 @@ for home in homes:
         home.geo_lat_decimal = dec_geo_lat
         home.geo_lng_decimal = dec_geo_lng
         home.save()
-        print (str(index) + '/' + str(cnt) + ' | ' + str(round(index/cnt*100)) + '% DONE :: ' + home.home_name)
+        print(str(index) + '/' + str(cnt) + ' | ' + str(round(index/cnt*100)) + '% DONE :: ' + home.home_name)
         index = index + 1
