@@ -1,19 +1,19 @@
 version: "3.9"
    
 services:
-  nginx:
+  eh-nginx:
     image: nginx:latest
     ports:
     - "80:80"
     volumes:
     - .:/code
+    - ./static:/code/static
     - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
   web:
     build: .
-    command: >
-      sh -c "python manage.py collectstatic && gunicorn elderlyhome.wsgi -b 0.0.0.0:8000"
+    command: gunicorn elderlyhome.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/code
     expose:

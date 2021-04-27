@@ -30,7 +30,7 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -163,7 +163,7 @@ STATICFILES_DIRS = [
     STATIC_DIR,
     ]
 
-STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
+STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
